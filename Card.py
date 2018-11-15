@@ -1,7 +1,4 @@
 class Card:
-    def __init__(self):
-        
-
     def card(self):
         
         shape = ["S", "D", "H", "C"]
