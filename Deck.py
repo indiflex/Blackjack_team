@@ -2,39 +2,28 @@
 ## return 셔플된 카드 리스트.
 ## 카드는 리스트로 해서 일단 오는 것으로 가정.
 import random
-#from Card import card
+import Card
+
+false_data = {"S2" : 2, "S3" : 3, "S4" : 4, "S5" : 5, "S6" : 6}
+
+## 들어오는 card는 딕셔너리 형태.
+## 딕셔너리는 셔플을 할 수 없다.
+## 딕셔너리의 키들을 뽑아서, 셔플하고, 그 키들을 이용하여 값들에 접근하자.
+
+def card_shuffle(x):
+    y = list(x.keys())
+    random.shuffle(y)
+    return y
+
+def card_give():
+# print(false_data)
+# print(type(false_data))
+# print(false_data.keys())
+
+# y = list(false_data.keys())
+# print(card_shuffle(false_data))
 
 
-def card_shuffle():
-    random.shuffle(card)
-    # print("card_shuffle = ", card)
-    return list(card)
 
-## 카드를 분배하는 곳.
-def card_give(list):
-    card = card_shuffle()
-    return card.pop()
-        
+# print(card_shuffle(false_data))
 
-# card_shuffle()
-
-
-# for i in range(6):
-#     a = card_give
-#     print("card_give = ", card_give(card_shuffle))
-# print("=======> card_shuffle = ", card_shuffle())
-
-card = [1,2,3,4,5]
-print("card = ", card)
-a = card_give(card)
-print("card_give = ", a)
-print("card = ", card)
-a = card_give(a)
-print("card_give = ", a)
-print("card = ", card)
-a = card_give(a)
-print("card_give = ", a)
-print("card = ", card)
-a = card_give(a)
-print("card_give = ", a)
-print("card = ", card)
