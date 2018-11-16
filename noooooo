@@ -1,5 +1,9 @@
+n = ['1', '2', '3', '4', '5', '6', '7', '8' ,'9' ,'10' ,'J', 'Q', 'K']
+s = ['S', 'H ', 'D', 'C']
 
-    number = 0
+
+def card_value(self):
+   number = 0
     if number in n[0:-4]:
         return int(number)
 
