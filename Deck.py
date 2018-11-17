@@ -5,13 +5,19 @@ import random
 from Card import Card
 
 false_data = {"S2" : 2, "S3" : 3, "S4" : 4, "S5" : 5, "S6" : 6}
-x = list(false_data.keys())
-random.shuffle(x)
+
+def pop(self):
+    false_data = {"S2" : 2, "S3" : 3, "S4" : 4, "S5" : 5, "S6" : 6}
+    x = list(false_data.keys())
+    random.shuffle(x)
+
+popx = x.pop()
+print(popx)
 
 # Card.card()
 
 # print(x)
-popx = x.pop()
+
 # print(x.pop())
 # print(x)
 # print(x.pop())
