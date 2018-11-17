@@ -42,12 +42,9 @@ class Card:
 
         return cards
 
-<<<<<<< HEAD
         return cards
 
 
 ### 카드 점수 모아서 보여주는 함수.
-=======
 카드 = Card()
 카드.card()
->>>>>>> 1be65f9f1fdd41c396571814eae765bc060f41cf

@@ -5,29 +5,32 @@
 
 #카드 받아서 저장하는 부분. 리스트로 받는다.
 import random
-<<<<<<< HEAD
 from Deck import share
 import Card
-=======
 from Card import Card
 
-shape = ["S", "D", "H", "C"]
-number = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
-point = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "10", "10", "10"]
-points = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "10", "10", "10"] * 4
+card = Card()
 
-card = {}
-for i in range(13):
-    card[number[i]] = point[i] 
-print(card)
 
-y = list(card.keys())
-print(y)
+class person():
+	def __init__(self):
+		self.hand = []
+		self.point = []
 
->>>>>>> 1be65f9f1fdd41c396571814eae765bc060f41cf
+	def bust(self.hand):
+		for i in len(self.hand)
+			self.point.append(card(self.hand[i]))
+		total = sum(self.point)
+		if total > 21:
+			print("busted over 21")
+		elif total == 21:
+			print("draw 21pt")
+		else:
+			coninue
 
-d_cards = []
-p_cards = []
+	def isStay():
+		return 
+
 
 # x는 카드키값 리스트
 #return 받은 카드 리스트. = hand
@@ -37,13 +40,11 @@ def hand():
 	return self.hand
 
 ## hand의 패수가 2장인지?
-<<<<<<< HEAD
 def pack(self.hand):
 	if len(self.hand) == 2:
 		break
 	else:
 		share() ####### x(카드키값 리스트) 불러와야 함.
-=======
 
 while len(d_cards) != 2:
     d_cards.append(d_cards)
@@ -56,7 +57,6 @@ while len(p_cards) == 2:
     if len(p_cards) == 2:
         print ("player has ", p_cards)
 print()
->>>>>>> 1be65f9f1fdd41c396571814eae765bc060f41cf
 
 ## hand의 합이 21보다 크거나 같은가?
 def isEnd(self.hand):
@@ -100,18 +100,14 @@ def score(d_hand, p_hand):
 		print(d_hand, p_hand)			   
 		print("You've won.\n")
 
-<<<<<<< HEAD
 ##Hit/Stay 상태를 확인하는 부분.
 def isStay():
 	return true
-=======
 # ##Hit/Stay 상태를 확인하는 부분.
 
->>>>>>> 1be65f9f1fdd41c396571814eae765bc060f41cf
 
 # ## Hit 함수 카드 받는 함수.
 
-<<<<<<< HEAD
 h_or_s = input("Hit or Stay?>>>")
 
 ## Stay
@@ -120,9 +116,7 @@ def stay():
 		score()
 	else:
 		share()
-=======
 # h_or_s = input("Hit or Stay?>>>")
 # ## Stay
->>>>>>> 1be65f9f1fdd41c396571814eae765bc060f41cf
 
 
