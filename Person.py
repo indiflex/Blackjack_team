@@ -1,6 +1,4 @@
 import Gameplay
-
-
 class Person:
     def __init__(self):
         self.name = ''
@@ -9,7 +7,6 @@ class Person:
 
     def score(self):
         self.point = []
-
         for i in self.hand:
             cards = Gameplay.card()  # 4 'A'의 점수를 1 or 11로 어떻게 정하는가?
             k = cards[i]
@@ -29,15 +26,12 @@ class Person:
         
     def over_21(self):  # 1 자식인스턴스의 버스트 시, 모든 자식 인스턴스들의 attribute를 보여줄 방법은?
         score = self.score()
-
         if score > 21:
             print("{} is busted!!!".format(self.name))
             return False
-
         elif score == 21:
             print("{} accomplished BlackJack!!!".format(self.name))
             return False
-
         else:
             return True
 
@@ -49,7 +43,6 @@ class Person:
             self.name, self.score(), self.name, self.hand))
 
 ######################### Player #######################
-
 
 class Player(Person):
     def __init__(self):
@@ -74,6 +67,7 @@ class Player(Person):
         print("..............{}'s score = {}".format(self.name, a))
         return a
 
+######################### Dealer #######################
 
 class Dealer(Person):
     def __init__(self):
@@ -81,8 +75,8 @@ class Dealer(Person):
         self.name = "Dealer"
         print("{}가 입장하였습니다.".format(self.name))
 
-    def decision(self, x):
-        
+
+    def decision(self, x):        
         if self.score() > 17:
             return False
         else:
