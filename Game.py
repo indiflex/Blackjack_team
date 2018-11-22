@@ -1,48 +1,38 @@
-## main programm
-from Card import Card
-import Deck
-import Player
-import Dealer
+import Gameplay 
+import Person
 
-card = Card()   ## 카드 딕셔너리를 받는 부분
-# deck = Deck()   ## 카드키값만 가지고 리스트가 오는 부분.
-player = Player()   ## 인스턴스
-dealer = Dealer()   ## 인스턴스
-
-Deck.share(Deck)
-
-if len(player.hand) <= 2 and len(dealer.hand) <= 2:
-    bust(player.hand)  ## 각각 가지고 hand의 점수가 21 혹은 over되는지 확인하는 함수.
-    bust(dealer.hand)
-
-player.isStay() ## 히트지, 스테이인지 물어보는 곳.
-                ## input 이 들어가서 입력을 받아야는 함수인것.
-Bust(player.hand)
+print("Welcome to BlackJack Game World!!!")
+user_input = input("Wanna Gambling? \nPress 's' to Start / 'e' to Exit >>> ")
+if user_input == 's':
+    while True:
+        cards = Gameplay.card()   
+        deck = Gameplay.deck_key()   
+        player = Person.Player()
+        dealer = Person.Dealer()
+        Gameplay.give_2cards(player.hand, dealer.hand, deck)
+        print("Player's hand = ", player.hand)
 
 
-if player.isStay() != 0 or Bust() == 0:
-    dealer.isStay() ## 히트지, 스테이인지 물어보는 곳.
-                    ## input 이 들어가서 입력을 받아야는 함수인것
-    
+        if player.over_21() == False or dealer.over_21() == False:
+            pass
+        else:
+            while True:
+                
+                if player.decision(deck) == False:
+                    break
+                if player.over_21() == False: ## 리턴 while 변수
+                    break
+            while True:
+                if dealer.decision(deck) == False:
+                    break
+                if dealer.over_21() == False:
+                    break
+        Gameplay.outcome(player.score(), dealer.score())  ##3 플레이어와 딜러의 패와 점수들을 인자값 받지 않고 보여줄 방법은?
+        Gameplay.close_game(dealer.score())  ##2 close 내에서 재입력 받는 방법은?
+elif user_input == 'e':
+    print("THANK YOU!! GOOD BYE!!~~")
+    exit()
+else:
+    print("Wrong Insert. Please give me proper command.")
+    exit()
 
-## 승패 결정. 문구 프린트.
-
-for i in len(player.hand):
-    player.point.append(card(player.hand[i]))
-p_score = sum(player.point)
-
-for i in len(dealer.hand):
-    dealer.point.append(card(dealer.hand[i]))
-d_score = sum(dealer.point)
-
-if p_score > d_score:
-    print(p_score, d_score)
-    print ('You have won')
-
-elif p_score == d_score:
-    print(p_score, d_score)
-    print ('You have tied the dealer')
-
-elif p_score < d_score:
-    print(p_score, d_score)
-    print("You have lost")

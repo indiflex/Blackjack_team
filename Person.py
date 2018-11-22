@@ -1,122 +1,90 @@
-# class Person():
-# 	def __init__(self):
-# 		return
+import Gameplay
 
 
-#카드 받아서 저장하는 부분. 리스트로 받는다.
-import random
-from Deck import share
-import Card
-from Card import Card
+class Person:
+    def __init__(self):
+        self.name = ''
+        self.hand = []
+        self.point = []
 
-card = Card()
+    def score(self):
+        self.point = []
 
+        for i in self.hand:
+            cards = Gameplay.card()  # 4 'A'의 점수를 1 or 11로 어떻게 정하는가?
+            k = cards[i]
+            self.point.append(int(k))
+        a = sum(self.point)
+        if a > 21 and self.point.count(11) != 0:  # A가 있으면
+            a_value = self.point.count(11)
+            total_value = sum(self.point)
+            a = total_value - (a_value * 10)
+            return int(a)
+        elif a > 21 and self.point.count(11) == 0:
+            return int(a)
+        elif a < 21:
+            return int(a)   
+        else:
+            return int(a)     
+        
+    def over_21(self):  # 1 자식인스턴스의 버스트 시, 모든 자식 인스턴스들의 attribute를 보여줄 방법은?
+        score = self.score()
 
-class person():
-	def __init__(self):
-		self.hand = []
-		self.point = []
+        if score > 21:
+            print("{} is busted!!!".format(self.name))
+            return False
 
-	def bust(self.hand):
-		for i in len(self.hand)
-			self.point.append(card(self.hand[i]))
-		total = sum(self.point)
-		if total > 21:
-			print("busted over 21")
-		elif total == 21:
-			print("draw 21pt")
-		else:
-			coninue
+        elif score == 21:
+            print("{} accomplished BlackJack!!!".format(self.name))
+            return False
 
-	def isStay():
-		return 
+        else:
+            return True
 
+    def decision(self, isStay):
+        return 0
 
-# x는 카드키값 리스트
-#return 받은 카드 리스트. = hand
-def hand():
-	self.hand = []
-	self.hand.append(x)
-	return self.hand
+    def show_infor(self):
+        print("{}'s Score = {}, {}'s Hand = {}".format(
+            self.name, self.score(), self.name, self.hand))
 
-## hand의 패수가 2장인지?
-def pack(self.hand):
-	if len(self.hand) == 2:
-		break
-	else:
-		share() ####### x(카드키값 리스트) 불러와야 함.
-
-while len(d_cards) != 2:
-    d_cards.append(d_cards)
-    if len(d_cards) == 2:
-        print ("Dealer has ", d_cards)
-print()
-
-while len(p_cards) == 2:
-    p_cards.append(p_cards)
-    if len(p_cards) == 2:
-        print ("player has ", p_cards)
-print()
-
-## hand의 합이 21보다 크거나 같은가?
-def isEnd(self.hand):
-	self.point = []
-	self.point = Card.Card.card()[self.hand]
-	total = sum(self.point)
-	if total >= 21:
-		print("Game End")
-	else:
-		continue	## 게임을 계속 진행하도록 하는 부분.
-
-## 아니면 게임. 크거나 같으면 끄읕.
-
-# d_hand = []
-# p_hand = []
-
-# def total():
-
-# total = sum(d_hand)
-
-def score(d_hand, p_hand):
-	if total(p_hand) == 21:
-		print(d_hand, p_hand)
-		print ("You've got a Blackjack!\n")
-	elif total(d_hand) == 21:
-		print(d_hand, p_hand)		
-		print("The dealer've got a blackjack.\n")
-	elif total(p_hand) > 21:
-		print(d_hand, p_hand)
-		print ("Sorry. You've lost.\n")
-	elif total(d_hand) > 21:
-		print(d_hand, p_hand)			   
-		print ("You've won.\n")
-	elif total(p_hand) == total(d_hand):
-		print(d_hand, p_hand)			   
-		print ("Draw".\n")	
-	elif total(p_hand) < total(d_hand):
-		print(d_hand, p_hand)
-        # print("You've lost.\n")
-	else: 
-		print(d_hand, p_hand)			   
-		print("You've won.\n")
-
-##Hit/Stay 상태를 확인하는 부분.
-def isStay():
-	return true
-# ##Hit/Stay 상태를 확인하는 부분.
+######################### Player #######################
 
 
-# ## Hit 함수 카드 받는 함수.
+class Player(Person):
+    def __init__(self):
+        super().__init__()
+        self.name = "Player"
+        print("{}가 입장하였습니다.".format(self.name))
 
-h_or_s = input("Hit or Stay?>>>")
+    def decision(self, x):
+        user_input = input("Hit or Stay??? \n'h' for Hit, 's' for Stay >>> ")
+        if user_input == 'h':
+            self.hand.append(Gameplay.deck_share(x))
+            print("{}'s hand = {}".format(self.name, self.hand))
+            # 1 자식인스턴스의 버스트 시, 모든 자식 인스턴스들의 attribute를 보여줄 방법은?
+            return True
+        elif user_input == 's':
+            return False
+        else:
+            print("Please make sure your insert key!!")
 
-## Stay
-def stay():
-	if isStay():
-		score()
-	else:
-		share()
-# h_or_s = input("Hit or Stay?>>>")
-# ## Stay
+    def score(self):
+        a = super().score()
+        print("..............{}'s score = {}".format(self.name, a))
+        return a
 
 
+class Dealer(Person):
+    def __init__(self):
+        super().__init__()
+        self.name = "Dealer"
+        print("{}가 입장하였습니다.".format(self.name))
+
+    def decision(self, x):
+        
+        if self.score() > 17:
+            return False
+        else:
+            self.hand.append(Gameplay.deck_share(x))
+            return True
