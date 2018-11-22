@@ -1,2 +1,2 @@
-# Blackjack_team
-python team portfolio - blackjack
+# GW_Blackjack
+#complete
